@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { SSRProvider, OverlayProvider } from 'react-aria';
+import { OverlayProvider } from 'react-aria';
 import '@styles/global.css';
 import '@styles/nprogress.css';
 import '@styles/chrome-bug.css';
@@ -29,7 +29,6 @@ export default function App({ Component, pageProps }: AppProps) {
     document.body.classList?.remove('loading');
   }, []);
   return (
-    <SSRProvider>
       <OverlayProvider>
         <HMSRoomProvider>
           <Component {...pageProps} />
@@ -37,6 +36,5 @@ export default function App({ Component, pageProps }: AppProps) {
           <NProgress />
         </HMSRoomProvider>
       </OverlayProvider>
-    </SSRProvider>
   );
 }
