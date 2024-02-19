@@ -17,7 +17,7 @@
 import { GetStaticProps, GetStaticPaths } from 'next';
 import Error from 'next/error';
 import Head from 'next/head';
-import { SkipNavContent } from '@reach/skip-nav';
+import { SkipNavContent } from '../../components/skip-nav';
 import { getUserByUsername } from '@lib/db-api';
 
 import Page from '@components/page';
@@ -44,7 +44,7 @@ export default function TicketShare({ username, ticketNumber, name, usernameFrom
         url: `${SITE_URL}/tickets/${username}`
       }
     : {
-        title: 'Ticket Demo - Virtual Event Starter Kit',
+        title: 'Ticket - GDC Forum Europe 2024',
         description: META_DESCRIPTION,
         image: `/api/ticket-images/${usernameFromParams}`,
         url: `${SITE_URL}/tickets/${usernameFromParams}`

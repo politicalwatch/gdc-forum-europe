@@ -31,7 +31,7 @@ type Props = {
 
 export default function SchedulePage({ allStages }: Props) {
   const meta = {
-    title: 'Schedule - Virtual Event Starter Kit',
+    title: 'Schedule - GDC Forum Europe 2024',
     description: META_DESCRIPTION
   };
 

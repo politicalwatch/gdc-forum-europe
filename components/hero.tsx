@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 import cn from 'classnames';
 import styleUtils from './utils.module.css';
 import styles from './hero.module.css';
@@ -50,7 +49,7 @@ export default function Hero() {
         <p>{DATE}</p>
         <div className={styles['description-separator']} />
         <p>
-          <strong>Online</strong>
+          <strong>Barcelona & Online</strong>
         </p>
       </div>
     </div>

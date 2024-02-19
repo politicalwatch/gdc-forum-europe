@@ -17,10 +17,10 @@
 import Link from 'next/link';
 import cn from 'classnames';
 import { useRouter } from 'next/router';
-import { SkipNavContent } from '@reach/skip-nav';
 import { NAVIGATION } from '@lib/constants';
 import styles from './layout.module.css';
 import Logo from './icons/icon-logo';
+import { SkipNavContent } from './skip-nav';
 import MobileMenu from './mobile-menu';
 import Footer from './footer';
 import React from 'react';
@@ -54,7 +54,7 @@ export default function Layout({
           <header className={cn(styles.header)}>
             <div className={styles['header-logos']}>
               <MobileMenu key={router.asPath} />
-              <Link href="/">
+              <Link href="/" legacyBehavior>
                 {/* eslint-disable-next-line */}
                 <a className={styles.logo}>
                   <Logo />
@@ -75,17 +75,18 @@ export default function Layout({
               ))}
             </div>
 
-            {(hmsConfig.hmsIntegration && isLive && !disableCta.includes(activeRoute)) ||
+            {/* {(hmsConfig.hmsIntegration && isLive && !disableCta.includes(activeRoute)) ||
             activeRoute === '/' ? (
               <div className={cn(styles['header-right'])}>
                 {activeRoute === '/' ? <DemoButton /> : <RoomCta />}
               </div>
             ) : (
               <div />
-            )}
+            )} */}
+            <div />
           </header>
         )}
-        <ViewSource />
+        {/* <ViewSource /> */}
         <div className={styles.page}>
           <main className={styles.main} style={layoutStyles}>
             <SkipNavContent />

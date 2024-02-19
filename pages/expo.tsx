@@ -31,7 +31,7 @@ type Props = {
 
 export default function ExpoPage({ sponsors }: Props) {
   const meta = {
-    title: 'Expo - Virtual Event Starter Kit',
+    title: 'Expo - GDC Forum Europe 2024',
     description: META_DESCRIPTION
   };
 

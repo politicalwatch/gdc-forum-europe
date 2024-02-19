@@ -19,6 +19,7 @@
 }
 
 .hero {
+  color: var(--accents-7);
   font-size: 52px;
   line-height: 1.15;
   letter-spacing: -0.05em;

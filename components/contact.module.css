@@ -21,10 +21,10 @@
 }
 
 .contact-email {
-  color: #fff;
+  color: var(--brand);
 }
 
 .contact-email:hover {
   text-decoration: underline;
-  color: #fff;
+  color: var(--secondary-color);
 }
