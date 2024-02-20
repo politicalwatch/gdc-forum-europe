@@ -22,7 +22,6 @@ import Header from '@components/header';
 import { META_DESCRIPTION } from '@lib/constants';
 
 export default function Conf() {
-  const { query } = useRouter();
   const meta = {
     title: 'About | GDC Forum Europe 2024',
     description: META_DESCRIPTION
