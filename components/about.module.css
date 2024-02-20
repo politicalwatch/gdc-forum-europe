@@ -1,0 +1,30 @@
+.container {
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.container::-webkit-scrollbar {
+  display: none;
+}
+
+.row-wrapper {
+  display: inline-block;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  margin: 0 24px;
+  padding: var(--space-8x) 0 0;
+  border-bottom: 1px solid var(--accents-7);
+  width: 100%;
+}
+
+.row-wrapper p {
+  margin: var(--space-4x) var(--space-6x);
+
+  @media screen and (min-width: 770px) {
+    max-width: 60%;
+    margin: var(--space-4x) var(--space-32x) var(--space-4x) var(--space-8x);
+  }
+}
