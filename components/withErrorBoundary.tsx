@@ -5,7 +5,7 @@ interface State {
 }
 
 export default function withErrorBoundary(WrappedComponent: React.ComponentType<any>) {
-  return class extends React.Component<{}, State> {
+  return class extends React.Component<object, State> {
     state: State = {
       hasError: false
     };
