@@ -42,7 +42,11 @@ export const SAMPLE_TICKET_NUMBER = 1234;
 export const NAVIGATION = [
   {
     name: 'Live Stage',
-    route: '/stage/a'
+    route: '/stage/main'
+  },
+  {
+    name: 'About',
+    route: '/about'
   },
   {
     name: 'Schedule',
@@ -55,10 +59,6 @@ export const NAVIGATION = [
   {
     name: 'Expo',
     route: '/expo'
-  },
-  {
-    name: 'Jobs',
-    route: '/jobs'
   }
 ];
 

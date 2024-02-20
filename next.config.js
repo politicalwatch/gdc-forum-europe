@@ -16,14 +16,39 @@
 
 module.exports = {
   images: {
-    domains: [
-      'www.datocms-assets.com',
-      'a.storyblok.com',
-      'images.ctfassets.net',
-      'images.prismic.io',
-      'cdn.aglty.io',
-      'localhost' // For Strapi
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'www.datocms-assets.com',
+        pathname: '**'
+      },
+      {
+        protocol: 'https',
+        hostname: 'a.storyblok.com',
+        pathname: '**'
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.ctfassets.net',
+        pathname: '**'
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.prismic.io',
+        pathname: '**'
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn.aglty.io',
+        pathname: '**'
+      },
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+        pathname: '**'
+      }
     ],
     imageSizes: [24, 64, 300]
   }
+  // output: 'standalone'  // enable to generate a static site and deploy with Docker
 };
