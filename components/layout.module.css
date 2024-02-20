@@ -16,7 +16,7 @@
 
 .background {
   background: var(--background);
-  color: #fff;
+  color: var(--foreground);
   min-height: 100vh;
   min-height: var(--100vh);
   display: flex;
