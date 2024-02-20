@@ -22,8 +22,7 @@ export const SITE_NAME_MULTILINE = ['Global Democracy Coalition', 'Forum Europe'
 export const SITE_NAME = 'GDC Forum Europe';
 export const META_DESCRIPTION =
   'This is an open source demo that Next.js developers can clone, deploy, and fully customize for events. Created through collaboration of marketers, designers, and developers at Vercel.';
-export const SITE_DESCRIPTION =
-  'An interactive online experience by the community, free for everyone.';
+export const SITE_DESCRIPTION = 'A week-long celebration of democracy.';
 export const DATE = '12 March 2024';
 export const SHORT_DATE = 'Mar 12 - 9:00am PST';
 export const FULL_DATE = 'Mar 12th 9am Central European Standard Time (GMT+1)';
