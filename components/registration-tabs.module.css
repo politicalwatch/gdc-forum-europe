@@ -1,0 +1,22 @@
+.registration-tab__tabs {
+  display: flex;
+  justify-content: center;
+}
+
+.registration-tab__tab {
+  padding: 1rem;
+}
+
+.registration-tab__tab.active,
+.registration-tab__tab:hover {
+  color: var(--brand);
+}
+
+.registration-tab__content {
+  display: none;
+}
+.registration-tab__content.active {
+  display: block;
+  max-width: 80%;
+  margin: auto;
+}

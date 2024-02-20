@@ -16,7 +16,7 @@
 
 export default function IconLogo({
   backgroundColor = 'transparent',
-  foregroundColor = 'var(--accents-7)',
+  foregroundColor = 'var(--gray1)',
   ...props
 }) {
   return (

@@ -40,12 +40,13 @@
 }
 
 .card {
+  overflow: hidden;
   border-radius: var(--space-2x);
-  background: #111111;
   display: flex;
   flex-direction: column;
   background-clip: content-box, border-box;
-  background-image: linear-gradient(#111111, #111111), linear-gradient(to right, #333333, #333333);
+  background-image: linear-gradient(var(--accents-2), var(--accents-1)),
+    linear-gradient(to right, #333333, #333333);
   padding: 1px;
   cursor: pointer;
 }
@@ -53,22 +54,33 @@
 .card:hover,
 .card:focus {
   outline: none;
-  background-image: linear-gradient(#111111, #111111),
+  background-image: linear-gradient(var(--accents-2), var(--accents-1)),
     linear-gradient(to right, var(--brand), var(--brand));
 }
 
 .cardBody {
+  position: relative;
   padding: var(--space-4x);
-  color: var(--secondary-color);
+  border-radius: var(--space-2x);
+  background-image: linear-gradient(var(--accents-2), var(--accents-1));
+  color: var(--foreground);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%;
+}
+
+.cardBody:hover,
+.cardBody:focus {
+  background-image: linear-gradient(var(--accents-2), var(--accents-05));
 }
 
 .imageWrapper {
+  overflow: hidden;
   width: 100%;
-  height: 100%;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .image {
@@ -85,14 +97,14 @@
 
 .name {
   font-weight: bold;
-  color: #f1f1f1;
+  color: var(--secondary-color);
   font-size: 20px;
   margin: 0;
   line-height: 1.4;
 }
 
 .company {
-  color: #f1f1f1;
+  color: var(--secondary-color);
 }
 
 .title {

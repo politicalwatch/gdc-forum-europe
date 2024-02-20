@@ -155,7 +155,7 @@ export default function Form({ sharePage }: Props) {
       className={cn(styles.form, {
         [styles['share-page']]: sharePage,
         [styleUtils.appear]: !errorTryAgain,
-        [styleUtils['appear-fifth']]: !errorTryAgain && !sharePage,
+        [styleUtils['appear-third']]: !errorTryAgain && !sharePage,
         [styleUtils['appear-third']]: !errorTryAgain && sharePage
       })}
       onSubmit={onSubmit}
