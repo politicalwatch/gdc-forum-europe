@@ -21,10 +21,20 @@ import TalkCard from './talk-card';
 
 function StageRow({ stage }: { stage: Stage }) {
   // Group talks by the time block
-  const timeBlocks = stage.schedule.reduce((allBlocks: any, talk) => {
-    allBlocks[talk.start] = [...(allBlocks[talk.start] || []), talk];
-    return allBlocks;
-  }, {});
+  const timeBlocks = stage.schedule
+    .sort((a, b) => {
+      if (a.start < b.start) {
+        return -1;
+      } else if (a.start > b.start) {
+        return 1;
+      } else {
+        return 0;
+      }
+    })
+    .reduce((allBlocks: any, talk) => {
+      allBlocks[talk.start] = [...(allBlocks[talk.start] || []), talk];
+      return allBlocks;
+    }, {});
 
   return (
     <div key={stage.name} className={styles.row}>
