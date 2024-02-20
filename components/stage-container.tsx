@@ -99,7 +99,7 @@ export default function StageContainer({ stage, allStages }: Props) {
           <Sidebar allStages={allStages} />
         ) : null
       ) : (
-        <ScheduleSidebar allStages={updatedStages} />
+        <ScheduleSidebar allStages={allStages} />
       )}
     </div>
   );

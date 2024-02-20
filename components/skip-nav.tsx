@@ -1,6 +1,16 @@
 import React from 'react';
 
-function SkipNavLink({ toId, children }) {
+interface SkipNavLinkProps {
+  toId?: string;
+  children?: React.ReactNode;
+}
+
+interface SkipNavContentProps {
+  id?: string;
+  children?: React.ReactNode;
+}
+
+function SkipNavLink({ toId, children }: SkipNavLinkProps) {
   return (
     <a href={`#${toId}`} skip-to={toId}>
       {children}
@@ -8,7 +18,7 @@ function SkipNavLink({ toId, children }) {
   );
 }
 
-function SkipNavContent({ id, children }) {
+function SkipNavContent({ id, children }: SkipNavContentProps) {
   return (
     <main id={id} skip-content={id}>
       {children}

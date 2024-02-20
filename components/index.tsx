@@ -15,12 +15,13 @@
  */
 
 import { useState } from 'react';
+
 import { PageState, ConfDataContext, UserData } from '@lib/hooks/use-conf-data';
 import Ticket from './ticket';
 import Layout from './layout';
 import ConfContainer from './conf-container';
 import Hero from './hero';
-import Form from './form';
+import RegistrationTabs from './registration-tabs';
 import LearnMore from './learn-more';
 
 type Props = {
@@ -50,7 +51,7 @@ export default function Conf({
           {pageState === 'registration' && !sharePage ? (
             <>
               <Hero />
-              <Form />
+              <RegistrationTabs />
               <LearnMore />
             </>
           ) : (
