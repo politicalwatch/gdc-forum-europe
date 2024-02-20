@@ -14,8 +14,6 @@
  * limitations under the License.
  */
 
-import { useRouter } from 'next/router';
-
 import Page from '@components/page';
 import Layout from '@components/layout';
 import Header from '@components/header';
