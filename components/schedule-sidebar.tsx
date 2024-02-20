@@ -57,7 +57,17 @@ export default function ScheduleSidebar({ allStages }: Props) {
         </Select>
       ) : null}
       <div className={styles.talks}>
-        {currentStage?.schedule.map(talk => <TalkCard key={talk.title} talk={talk} showTime />)}
+        {currentStage?.schedule
+          .sort((a, b) => {
+            if (a.start < b.start) {
+              return -1;
+            } else if (a.start > b.start) {
+              return 1;
+            } else {
+              return 0;
+            }
+          })
+          .map(talk => <TalkCard key={talk.title} talk={talk} showTime />)}
       </div>
     </div>
   );
