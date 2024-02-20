@@ -30,6 +30,7 @@ const Header = () => {
     >
       <div className="flex flex-row items-center gap-2">
         <div className="block items-center">
+          {/* @ts-ignore */}
           {localPeer.roleName === 'viewer' ? (
             <button
               onClick={leave}

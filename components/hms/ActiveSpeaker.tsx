@@ -20,10 +20,11 @@ const ActiveSpeaker = () => {
     }
   };
 
+  //@ts-ignore
   const prevPeer = usePrevious(activeSpeaker);
 
   const getPeer = useCallback(() => {
-    if (localPeer.roleName === 'viewer') {
+    if (localPeer?.roleName === 'viewer') {
       return prevPeer || localPeer;
     } else {
       return localPeer;
@@ -31,11 +32,13 @@ const ActiveSpeaker = () => {
   }, [localPeer, prevPeer]);
 
   useEffect(() => {
+    //@ts-ignore
     peerFilter(dominantSpeaker || getPeer());
   }, [dominantSpeaker, getPeer]);
 
   const { pagesWithTiles, ref } = useVideoList({
     maxTileCount: 1,
+    //@ts-ignore
     peers: [activeSpeaker],
     aspectRatio: hmsConfig.aspectRatio
   });

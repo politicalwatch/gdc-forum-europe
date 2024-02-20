@@ -3,7 +3,7 @@ import { Loading } from '../Loading';
 import {
   MicOffIcon,
   MicOnIcon,
-  SettingIcon,
+  SettingsIcon,
   VideoOffIcon,
   VideoOnIcon,
   ArrowRightIcon
@@ -100,7 +100,7 @@ const PreviewContainer: React.FC<{ name: string }> = ({ name }) => {
           <div className="absolute z-30 bottom-4 right-4">
             <SettingDialog>
               <IconButton>
-                <SettingIcon />
+                <SettingsIcon />
               </IconButton>
             </SettingDialog>
           </div>
@@ -114,6 +114,7 @@ const PreviewContainer: React.FC<{ name: string }> = ({ name }) => {
 };
 
 const PreviewVideo: React.FC<{ videoTrack: HMSPeer['videoTrack'] }> = ({ videoTrack }) => {
+  //@ts-ignore
   const ref = useVideo(videoTrack || '');
   return (
     <video
@@ -121,6 +122,7 @@ const PreviewVideo: React.FC<{ videoTrack: HMSPeer['videoTrack'] }> = ({ videoTr
       autoPlay
       muted
       playsInline
+      //@ts-ignore
       ref={ref}
     />
   );

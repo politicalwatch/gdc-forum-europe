@@ -1,8 +1,8 @@
-const IconButton: React.FC<{ active?: boolean; onClick?: () => void }> = ({
-  active = false,
-  onClick,
-  children
-}) => {
+const IconButton: React.FC<{
+  active?: boolean;
+  onClick?: () => void;
+  children: React.ReactNode;
+}> = ({ active = false, onClick, children }) => {
   return (
     <button
       onClick={onClick}
