@@ -27,7 +27,6 @@ import formStyles from './form.module.css';
 import ticketFormStyles from './ticket-form.module.css';
 import { saveGithubToken } from '@lib/user-api';
 import { GitHubOAuthData } from '@lib/types';
-import { InviteStageIcon } from '@100mslive/react-icons';
 
 type FormState = 'default' | 'loading' | 'error';
 
@@ -232,9 +231,7 @@ export default function Form({ defaultUsername = '', setTicketGenerationState }:
           )}
         >
           <div className={ticketFormStyles.generateWithGithub}>
-            <span className={ticketFormStyles.githubIcon}>
-              <InviteStageIcon />
-            </span>
+            <span className={ticketFormStyles.githubIcon}></span>
             Go to Live Stage
           </div>
         </a>

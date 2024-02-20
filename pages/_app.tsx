@@ -22,19 +22,16 @@ import type { AppProps } from 'next/app';
 import NProgress from '@components/nprogress';
 import ResizeHandler from '@components/resize-handler';
 import { useEffect } from 'react';
-import { HMSRoomProvider } from '@100mslive/react-sdk';
 
 export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
     document.body.classList?.remove('loading');
   }, []);
   return (
-      <OverlayProvider>
-        <HMSRoomProvider>
-          <Component {...pageProps} />
-          <ResizeHandler />
-          <NProgress />
-        </HMSRoomProvider>
-      </OverlayProvider>
+    <OverlayProvider>
+      <Component {...pageProps} />
+      <ResizeHandler />
+      <NProgress />
+    </OverlayProvider>
   );
 }

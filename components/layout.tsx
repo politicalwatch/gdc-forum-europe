@@ -24,10 +24,6 @@ import { SkipNavContent } from './skip-nav';
 import MobileMenu from './mobile-menu';
 import Footer from './footer';
 import React from 'react';
-import DemoButton from './hms/demo-cta';
-import RoomCta from './hms/demo-cta/room-cta';
-import { hmsConfig } from './hms/config';
-import ViewSource from './view-source';
 
 type Props = {
   children: React.ReactNode;
