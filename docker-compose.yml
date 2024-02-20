@@ -1,0 +1,8 @@
+version: '3.3'
+services:
+  gds-forum-frontend:
+    image: politicalwatch/gdc-forum:latest
+    container_name: gdc-forum
+    restart: unless-stopped
+    ports:
+      - 3000:3000
