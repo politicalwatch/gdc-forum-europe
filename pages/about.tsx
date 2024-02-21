@@ -29,7 +29,7 @@ export default function Conf() {
   return (
     <Page meta={meta} fullViewport>
       <Layout>
-        <Header hero="About" description="Coming soon!" />
+        <Header hero="About" />
         <About />
       </Layout>
     </Page>
