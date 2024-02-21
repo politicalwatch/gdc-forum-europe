@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-export const SITE_URL = 'https://demo.vercel.events';
+export const SITE_URL = 'https://gdc-forum-europe.politicalwatch.es';
 export const SITE_ORIGIN = process.env.NEXT_PUBLIC_SITE_ORIGIN || new URL(SITE_URL).origin;
 export const TWITTER_USER_NAME = 'GloDemCoalition';
 export const BRAND_NAME = 'GDC Forum Europe';
 export const SITE_NAME_MULTILINE = ['Global Democracy Coalition', 'Forum Europe'];
 export const SITE_NAME = 'GDC Forum Europe';
 export const META_DESCRIPTION =
-  'This is an open source demo that Next.js developers can clone, deploy, and fully customize for events. Created through collaboration of marketers, designers, and developers at Vercel.';
+  'Intended as a week-long celebration of democracy, the Global Democracy Forum 2024 promises to be a landmark event in the pursuit of advancing democracy globally alongside the partner organizations of the Global Coalition for Democracy. The aim of this event is to provide a space for dialogue on democracy, bringing together a diverse, multi-sector group of democratic organisations, policy makers and democracy advocates from around the world, offering an in-depth exploration of the regional perspectives on democracy and culminating in a global meeting.';
 export const SITE_DESCRIPTION = 'A week-long celebration of democracy.';
 export const DATE = '12 March 2024';
 export const SHORT_DATE = 'Mar 12 - 9:00am PST';
