@@ -21,16 +21,7 @@ import styles from './contact.module.css';
 export default function LearnMore() {
   return (
     <div className={cn(styleUtils.appear, styleUtils['appear-fifth'], styles.contact)}>
-      Learn more about{' '}
-      <a
-        href={'https://globaldemocracycoalition.org/'}
-        className={styles['contact-email']}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Global Democracy Coalition
-      </a>{' '}
-      and{' '}
+      Hosted by{' '}
       <a
         href={'https://politicalwatch.es/'}
         className={styles['contact-email']}

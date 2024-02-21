@@ -43,6 +43,11 @@
   animation-delay: 2.4s;
 }
 
+.animation-completed {
+  animation: none !important;
+  opacity: 1 !important;
+}
+
 @keyframes appear {
   to {
     opacity: 1;

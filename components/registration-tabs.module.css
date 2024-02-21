@@ -1,15 +1,21 @@
 .registration-tab__tabs {
   display: flex;
+  gap: 1rem;
   justify-content: center;
+  margin-bottom: 2rem;
 }
 
 .registration-tab__tab {
   padding: 1rem;
+  border: 3px solid transparent;
+  border-radius: 1rem;
+  transition: all 0.3s ease-out;
 }
 
 .registration-tab__tab.active,
 .registration-tab__tab:hover {
   color: var(--brand);
+  border-color: var(--brand);
 }
 
 .registration-tab__content {

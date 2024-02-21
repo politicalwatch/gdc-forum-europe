@@ -30,9 +30,10 @@ type FormState = 'default' | 'loading' | 'error';
 
 type Props = {
   sharePage?: boolean;
+  animationCompleted?: boolean;
 };
 
-export default function Form({ sharePage }: Props) {
+export default function Form({ sharePage, animationCompleted = false }: Props) {
   const [email, setEmail] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
   const [errorTryAgain, setErrorTryAgain] = useState(false);
@@ -155,7 +156,8 @@ export default function Form({ sharePage }: Props) {
       className={cn(styles.form, {
         [styles['share-page']]: sharePage,
         [styleUtils.appear]: !errorTryAgain,
-        [styleUtils['appear-third']]: !errorTryAgain && !sharePage,
+        [styleUtils['appear-fifth']]: !errorTryAgain && !sharePage,
+        [styleUtils['animation-completed']]: !errorTryAgain && !sharePage && animationCompleted,
         [styleUtils['appear-third']]: !errorTryAgain && sharePage
       })}
       onSubmit={onSubmit}

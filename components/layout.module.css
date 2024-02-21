@@ -53,7 +53,7 @@
 }
 
 .header-logos {
-  max-width: 300px;
+  max-width: 600px;
   display: flex;
   align-items: center;
 }
@@ -114,5 +114,11 @@
 
 .logo {
   display: flex;
-  width: 150px;
+  width: 160px;
+}
+
+.logo-pw {
+  display: flex;
+  width: 200px;
+  margin-left: var(--space-6x);
 }

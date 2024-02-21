@@ -20,6 +20,7 @@ import { useRouter } from 'next/router';
 import { NAVIGATION } from '@lib/constants';
 import styles from './layout.module.css';
 import Logo from './icons/icon-logo';
+import IconLogoPoliticalWatch from './icons/icon-logo-political-watch';
 import { SkipNavContent } from './skip-nav';
 import MobileMenu from './mobile-menu';
 import Footer from './footer';
@@ -42,7 +43,6 @@ export default function Layout({
 }: Props) {
   const router = useRouter();
   const activeRoute = router.asPath;
-  const disableCta = ['/schedule', '/speakers', '/expo', '/jobs'];
   return (
     <>
       <div className={styles.background}>
@@ -51,9 +51,13 @@ export default function Layout({
             <div className={styles['header-logos']}>
               <MobileMenu key={router.asPath} />
               <Link href="/" legacyBehavior>
-                {/* eslint-disable-next-line */}
                 <a className={styles.logo}>
                   <Logo />
+                </a>
+              </Link>
+              <Link href="/" legacyBehavior>
+                <a className={styles['logo-pw']}>
+                  <IconLogoPoliticalWatch />
                 </a>
               </Link>
             </div>

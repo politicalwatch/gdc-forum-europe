@@ -7,6 +7,7 @@ import styleUtils from './utils.module.css';
 
 function RegistrationTabs() {
   const [activeTab, setActiveTab] = useState('tab1');
+  const [animationCompleted, setAnimationCompleted] = useState(false);
   const [widgetLoaded, setWidgetLoaded] = useState(false);
 
   useEffect(() => {
@@ -40,12 +41,21 @@ function RegistrationTabs() {
 
   return (
     <div>
-      <div className={styles['registration-tab__tabs']}>
+      <div
+        className={cn(
+          styles['registration-tab__tabs'],
+          styleUtils['appear'],
+          styleUtils['appear-fourth']
+        )}
+      >
         <button
           className={cn(styles['registration-tab__tab'], {
             [styles.active]: activeTab === 'tab1'
           })}
-          onClick={() => setActiveTab('tab1')}
+          onClick={() => {
+            setActiveTab('tab1');
+            setAnimationCompleted(true);
+          }}
         >
           I want to attend online
         </button>
@@ -53,7 +63,10 @@ function RegistrationTabs() {
           className={cn(styles['registration-tab__tab'], {
             [styles.active]: activeTab === 'tab2'
           })}
-          onClick={() => setActiveTab('tab2')}
+          onClick={() => {
+            setActiveTab('tab2');
+            setAnimationCompleted(true);
+          }}
         >
           I want to attend in person
         </button>
@@ -63,7 +76,7 @@ function RegistrationTabs() {
           [styles.active]: activeTab === 'tab1'
         })}
       >
-        <Form />
+        <Form animationCompleted={animationCompleted} />
       </div>
       <div
         className={cn(styles['registration-tab__content'], {
@@ -72,7 +85,7 @@ function RegistrationTabs() {
       >
         <div
           id="eventbrite-widget-container-844642066157"
-          className={styleUtils['appear-third']}
+          className={cn(styleUtils['appear'], styleUtils['appear-first'])}
         ></div>
       </div>
     </div>
