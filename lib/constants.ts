@@ -24,8 +24,8 @@ export const META_DESCRIPTION =
   'Intended as a week-long celebration of democracy, the Global Democracy Forum 2024 promises to be a landmark event in the pursuit of advancing democracy globally alongside the partner organizations of the Global Coalition for Democracy. The aim of this event is to provide a space for dialogue on democracy, bringing together a diverse, multi-sector group of democratic organisations, policy makers and democracy advocates from around the world, offering an in-depth exploration of the regional perspectives on democracy and culminating in a global meeting.';
 export const SITE_DESCRIPTION = 'A week-long celebration of democracy.';
 export const DATE = '12 March 2024';
-export const SHORT_DATE = 'Mar 12 - 9:00am PST';
-export const FULL_DATE = 'Mar 12th 9am Central European Standard Time (GMT+1)';
+export const SHORT_DATE = 'Mar 12 - 10:00am CEST';
+export const FULL_DATE = 'Mar 12th 10am Central European Standard Time (GMT+1)';
 export const TWEET_TEXT = META_DESCRIPTION;
 export const COOKIE = 'user-id';
 
