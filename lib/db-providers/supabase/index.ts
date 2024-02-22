@@ -25,7 +25,7 @@ const supabase =
 
 export async function getUserByUsername(username: string): Promise<ConfUser> {
   const { data } = await supabase!
-    .from<ConfUser>('users')
+    .from('users')
     .select('name, ticketNumber')
     .eq('username', username)
     .single();
@@ -35,7 +35,7 @@ export async function getUserByUsername(username: string): Promise<ConfUser> {
 
 export async function getUserById(id: string): Promise<ConfUser> {
   const { data, error } = await supabase!
-    .from<ConfUser>('users')
+    .from('users')
     .select('name, username, createdAt')
     .eq('id', id)
     .single();
@@ -50,7 +50,7 @@ export async function createUser(
   organization: string
 ): Promise<ConfUser> {
   const { data, error } = await supabase!
-    .from<ConfUser>('users')
+    .from('users')
     .insert({ id, email, organization })
     .single();
   if (error) throw new Error(error.message);
@@ -59,11 +59,7 @@ export async function createUser(
 }
 
 export async function getTicketNumberByUserId(id: string): Promise<string | null> {
-  const { data } = await supabase!
-    .from<ConfUser>('users')
-    .select('ticketNumber')
-    .eq('id', id)
-    .single();
+  const { data } = await supabase!.from('users').select('ticketNumber').eq('id', id).single();
 
   return data?.ticketNumber!.toString() ?? null;
 }
@@ -72,6 +68,7 @@ export async function createGitHubUser(user: any): Promise<string> {
   const { data, error } = await supabase!.from('github_users').insert({ userData: user }).single();
   if (error) throw new Error(error.message);
 
+  // @ts-ignore
   return data.id;
 }
 
@@ -82,11 +79,7 @@ export async function updateUserWithGitHubUser(id: string, token: string): Promi
     throw new Error('Invalid or expired token');
   }
 
-  const { error } = await supabase!
-    .from<ConfUser>('users')
-    .update({ username, name })
-    .eq('id', id)
-    .single();
+  const { error } = await supabase!.from('users').update({ username, name }).eq('id', id).single();
   if (error) console.log(error.message);
 
   return { username, name };
