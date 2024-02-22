@@ -39,9 +39,8 @@ type Props = {
 
 export default function Ticket({ username, name, ticketNumber, sharePage }: Props) {
   const ticketRef = useRef<HTMLDivElement>(null);
-  const [ticketGenerationState, setTicketGenerationState] = useState<TicketGenerationState>(
-    'default'
-  );
+  const [ticketGenerationState, setTicketGenerationState] =
+    useState<TicketGenerationState>('default');
   const divRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -70,17 +69,7 @@ export default function Ticket({ username, name, ticketNumber, sharePage }: Prop
       <div ref={divRef}>
         <div className={styles['ticket-text']}>
           <h2 className={cn(styles.hero, styleUtils.appear, styleUtils['appear-first'])}>
-            {sharePage ? (
-              name ? (
-                <>{name}’s Ticket</>
-              ) : (
-                <>{SITE_NAME}</>
-              )
-            ) : (
-              <>
-                You're in. <br /> Make it unique.
-              </>
-            )}
+            {sharePage ? name ? <>{name}’s Ticket</> : <>{SITE_NAME}</> : <>You're in!</>}
           </h2>
           <p className={cn(styles.description, styleUtils.appear, styleUtils['appear-second'])}>
             {sharePage ? (
@@ -88,10 +77,7 @@ export default function Ticket({ username, name, ticketNumber, sharePage }: Prop
                 Join {name ?? 'them'} on {DATE}.
               </>
             ) : (
-              <>
-                Generate a unique ticket image with <br className={styleUtils['hide-on-mobile']} />
-                your GitHub profile.
-              </>
+              <>Let's meet on March 12th, 2024.</>
             )}
           </p>
         </div>

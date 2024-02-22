@@ -16,6 +16,7 @@
 
 import cn from 'classnames';
 import VercelLogo from '@components/icons/icon-platform';
+import IconLogoPoliticalWatch from './icons/icon-logo-political-watch';
 import styles from './footer.module.css';
 import { COPYRIGHT_HOLDER, SITE_NAME, CODE_OF_CONDUCT, LEGAL_URL, REPO } from '@lib/constants';
 
@@ -27,8 +28,8 @@ export function HostedByVercel() {
       target="_blank"
       rel="noopener noreferrer"
     >
-      <div className={styles['secondary-text']}>Created by </div>
-      <VercelLogo color="white" />
+      <div className={styles['secondary-text']}>Hosted by </div>
+      <IconLogoPoliticalWatch color="white" />
     </a>
   );
 }

@@ -17,7 +17,7 @@
 @media (min-width: 768px) {
   .info {
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr;
     gap: calc(var(--space-4x) * var(--size));
     font-size: calc(1em * var(--size));
   }
@@ -71,7 +71,7 @@
 }
 
 .url {
-  color: var(--accents-4);
+  color: var(--accents-95);
   margin-bottom: var(--space-12x);
 }
 

@@ -59,7 +59,6 @@ export default function Form({ sharePage, animationCompleted = false }: Props) {
           }
 
           const data = await res.json();
-          console.log('FORM DATA', data);
           const params = {
             id: data.id,
             ticketNumber: data.ticketNumber,

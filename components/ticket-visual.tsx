@@ -39,6 +39,8 @@ export default function TicketVisual({
   ticketNumber,
   ticketGenerationState = 'default'
 }: Props) {
+  const githubEnabled = Boolean(process.env.NEXT_PUBLIC_GITHUB_OAUTH_CLIENT_ID);
+
   return (
     <>
       <div className={styles.visual} style={{ ['--size' as string]: size }}>
@@ -48,14 +50,17 @@ export default function TicketVisual({
         <div className={styles['vertical-ticket']}>
           {username ? <TicketColoredMobile /> : <TicketMonoMobile />}
         </div>
-        <div className={styles.profile}>
-          <TicketProfile
-            name={name}
-            username={username}
-            size={size}
-            ticketGenerationState={ticketGenerationState}
-          />
-        </div>
+        {githubEnabled ? (
+          <div className={styles.profile}>
+            <TicketProfile
+              name={name}
+              username={username}
+              size={size}
+              ticketGenerationState={ticketGenerationState}
+            />
+          </div>
+        ) : null}
+
         <div className={styles.info}>
           <TicketInfo logoTextSecondaryColor={ticketNumber ? 'var(--brand)' : undefined} />
         </div>

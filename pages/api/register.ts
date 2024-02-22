@@ -89,7 +89,7 @@ export default async function register(
     statusCode = 200;
   } else {
     const newUser = await createUser(id, email, organization);
-    ticketNumber = newUser.ticketNumber!;
+    ticketNumber = parseInt((await getTicketNumberByUserId(id)) ?? '0', 10);
     createdAt = newUser.createdAt!;
     statusCode = 201;
   }

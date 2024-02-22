@@ -15,6 +15,7 @@
  */
 
 import { useState, useRef } from 'react';
+import Link from 'next/link';
 import { scrollTo } from '@lib/smooth-scroll';
 import cn from 'classnames';
 import GithubIcon from '@components/icons/icon-github';
@@ -165,76 +166,82 @@ export default function Form({ defaultUsername = '', setTicketGenerationState }:
       }}
     >
       <div className={cn(formStyles['form-row'], ticketFormStyles['form-row'])}>
-        <div className={cn(formStyles['github-wrapper'])}>
-          <button
-            type="submit"
+        {githubEnabled ? (
+          <>
+            <div className={cn(formStyles['github-wrapper'])}>
+              <button
+                type="submit"
+                className={cn(
+                  formStyles.submit,
+                  formStyles['generate-with-github'],
+                  formStyles[formState],
+                  {
+                    [formStyles['not-allowed']]: !githubEnabled
+                  }
+                )}
+                disabled={
+                  !process.env.NEXT_PUBLIC_GITHUB_OAUTH_CLIENT_ID ||
+                  formState === 'loading' ||
+                  Boolean(username)
+                }
+                onClick={() => {
+                  if (formRef && formRef.current && isMobileOrTablet()) {
+                    scrollTo(formRef.current, formRef.current.offsetHeight);
+                  }
+                }}
+              >
+                <div className={ticketFormStyles.generateWithGithub}>
+                  <span className={ticketFormStyles.githubIcon}>
+                    <GithubIcon color="#fff" size={24} />
+                  </span>
+                  {formState === 'loading' ? (
+                    <LoadingDots size={4} />
+                  ) : (
+                    username || 'Generate with GitHub'
+                  )}
+                </div>
+                {username ? (
+                  <span className={ticketFormStyles.checkIcon}>
+                    <CheckIcon color="#fff" size={24} />
+                  </span>
+                ) : null}
+              </button>
+              <p className={ticketFormStyles.description}>
+                {githubEnabled ? (
+                  'Only public info will be used.'
+                ) : (
+                  <>
+                    GitHub OAuth app is required.{' '}
+                    <a
+                      href={`${REPO}#authentication`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={ticketFormStyles['learn-more']}
+                    >
+                      Learn more.
+                    </a>
+                  </>
+                )}
+              </p>
+            </div>
+            <div className={formStyles['or-divider']}>OR</div>
+          </>
+        ) : null}
+
+        <Link href="/stage/main" legacyBehavior>
+          <a
             className={cn(
               formStyles.submit,
               formStyles['generate-with-github'],
-              formStyles[formState],
-              {
-                [formStyles['not-allowed']]: !githubEnabled
-              }
+              formStyles['stage-btn']
             )}
-            disabled={
-              !process.env.NEXT_PUBLIC_GITHUB_OAUTH_CLIENT_ID ||
-              formState === 'loading' ||
-              Boolean(username)
-            }
-            onClick={() => {
-              if (formRef && formRef.current && isMobileOrTablet()) {
-                scrollTo(formRef.current, formRef.current.offsetHeight);
-              }
-            }}
           >
             <div className={ticketFormStyles.generateWithGithub}>
-              <span className={ticketFormStyles.githubIcon}>
-                <GithubIcon color="#fff" size={24} />
-              </span>
-              {formState === 'loading' ? (
-                <LoadingDots size={4} />
-              ) : (
-                username || 'Generate with GitHub'
-              )}
+              <span className={ticketFormStyles.githubIcon}></span>
+              Go to Live Stage
             </div>
-            {username ? (
-              <span className={ticketFormStyles.checkIcon}>
-                <CheckIcon color="#fff" size={24} />
-              </span>
-            ) : null}
-          </button>
-          <p className={ticketFormStyles.description}>
-            {githubEnabled ? (
-              'Only public info will be used.'
-            ) : (
-              <>
-                GitHub OAuth app is required.{' '}
-                <a
-                  href={`${REPO}#authentication`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={ticketFormStyles['learn-more']}
-                >
-                  Learn more.
-                </a>
-              </>
-            )}
-          </p>
-        </div>
-        <div className={formStyles['or-divider']}>OR</div>
-        <a
-          href="/stage/a"
-          className={cn(
-            formStyles.submit,
-            formStyles['generate-with-github'],
-            formStyles['stage-btn']
-          )}
-        >
-          <div className={ticketFormStyles.generateWithGithub}>
-            <span className={ticketFormStyles.githubIcon}></span>
-            Go to Live Stage
-          </div>
-        </a>
+          </a>
+        </Link>
       </div>
     </form>
   );
