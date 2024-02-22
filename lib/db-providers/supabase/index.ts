@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 import { ConfUser } from '@lib/types';
-import { createClient } from '@supabase/supabase-js';
+import { SupabaseClient } from '@supabase/supabase-js';
 
 const supabase =
   process.env.SUPABASE_URL &&
   process.env.SUPABASE_SERVICE_ROLE_SECRET &&
   process.env.EMAIL_TO_ID_SECRET
-    ? createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_ROLE_SECRET)
+    ? new SupabaseClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_ROLE_SECRET)
     : undefined;
 
 export async function getUserByUsername(username: string): Promise<ConfUser> {
@@ -44,8 +44,15 @@ export async function getUserById(id: string): Promise<ConfUser> {
   return data ?? {};
 }
 
-export async function createUser(id: string, email: string): Promise<ConfUser> {
-  const { data, error } = await supabase!.from<ConfUser>('users').insert({ id, email }).single();
+export async function createUser(
+  id: string,
+  email: string,
+  organization: string
+): Promise<ConfUser> {
+  const { data, error } = await supabase!
+    .from<ConfUser>('users')
+    .insert({ id, email, organization })
+    .single();
   if (error) throw new Error(error.message);
 
   return data ?? {};
