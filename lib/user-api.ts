@@ -15,13 +15,13 @@
  */
 import crypto from 'crypto';
 
-export async function register(email: string, token?: string) {
+export async function register(email: string, organization?: string, token?: string) {
   return await fetch('/api/register', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ email, token })
+    body: JSON.stringify({ email, organization, token })
   });
 }
 

@@ -46,6 +46,7 @@ export default async function register(
   }
 
   const email: string = ((req.body.email as string) || '').trim().toLowerCase();
+  const organization: string = (req.body.organization as string).trim();
   const token: string = req.body.token as string;
   if (!validator.isEmail(email)) {
     return res.status(400).json({
@@ -87,7 +88,7 @@ export default async function register(
     createdAt = user.createdAt!;
     statusCode = 200;
   } else {
-    const newUser = await createUser(id, email);
+    const newUser = await createUser(id, email, organization);
     ticketNumber = newUser.ticketNumber!;
     createdAt = newUser.createdAt!;
     statusCode = 201;
@@ -111,6 +112,7 @@ export default async function register(
     ticketNumber,
     createdAt,
     name,
-    username
+    username,
+    organization
   });
 }

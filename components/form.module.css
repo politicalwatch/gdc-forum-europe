@@ -54,7 +54,8 @@
 }
 
 .input-label {
-  background-color: var(--gray);
+  background-color: var(--accents-95);
+  margin-bottom: 1rem;
   border-radius: var(--space-2x);
   border: 1px solid transparent;
   transition:
@@ -64,7 +65,7 @@
 }
 
 .input-label.focused {
-  background-color: #33373c;
+  background-color: var(--accents-9);
 }
 
 .input-label.error {
@@ -123,13 +124,13 @@
 
 @media (min-width: 768px) {
   .submit.register {
-    width: 120px;
-    height: 40px;
+    /* width: 120px; */
+    height: 48px;
     margin-top: 0;
-    position: absolute;
+    /* position: absolute; */
     border-radius: 5px;
-    right: var(--space-2x);
-    top: var(--space-2x);
+    /* right: var(--space-2x); */
+    /* top: var(--space-2x); */
   }
 }
 
@@ -139,7 +140,7 @@
 
 .submit.default:hover,
 .submit.default:focus {
-  background: black;
+  background: var(--accents-95);
   color: var(--brand);
 }
 

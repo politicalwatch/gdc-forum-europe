@@ -23,6 +23,7 @@ import LoadingDots from './loading-dots';
 import styleUtils from './utils.module.css';
 import styles from './form.module.css';
 import useEmailQueryParam from '@lib/hooks/use-email-query-param';
+import useOrganizationQueryParam from '@lib/hooks/use-organization-query-param';
 import { register } from '@lib/user-api';
 import Captcha, { useCaptcha } from './captcha';
 
@@ -35,9 +36,10 @@ type Props = {
 
 export default function Form({ sharePage, animationCompleted = false }: Props) {
   const [email, setEmail] = useState('');
+  const [organization, setOrganization] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
   const [errorTryAgain, setErrorTryAgain] = useState(false);
-  const [focused, setFocused] = useState(false);
+  const [focused, setFocused] = useState('');
   const [formState, setFormState] = useState<FormState>('default');
   const { setPageState, setUserData } = useConfData();
   const router = useRouter();
@@ -50,13 +52,14 @@ export default function Form({ sharePage, animationCompleted = false }: Props) {
 
   const handleRegister = useCallback(
     (token?: string) => {
-      register(email, token)
+      register(email, organization, token)
         .then(async res => {
           if (!res.ok) {
             throw new FormError(res);
           }
 
           const data = await res.json();
+          console.log('FORM DATA', data);
           const params = {
             id: data.id,
             ticketNumber: data.ticketNumber,
@@ -97,7 +100,7 @@ export default function Form({ sharePage, animationCompleted = false }: Props) {
           setFormState('error');
         });
     },
-    [email, router, setPageState, setUserData, sharePage]
+    [email, organization, router, setPageState, setUserData, sharePage]
   );
 
   const onSubmit = useCallback(
@@ -131,6 +134,7 @@ export default function Form({ sharePage, animationCompleted = false }: Props) {
   );
 
   useEmailQueryParam('email', setEmail);
+  useOrganizationQueryParam('organization', setOrganization);
 
   return formState === 'error' ? (
     <div
@@ -166,7 +170,7 @@ export default function Form({ sharePage, animationCompleted = false }: Props) {
         <label
           htmlFor="email-input-field"
           className={cn(styles['input-label'], {
-            [styles.focused]: focused
+            [styles.focused]: focused === 'email-input-field'
           })}
         >
           <input
@@ -176,10 +180,30 @@ export default function Form({ sharePage, animationCompleted = false }: Props) {
             id="email-input-field"
             value={email}
             onChange={e => setEmail(e.target.value)}
-            onFocus={() => setFocused(true)}
-            onBlur={() => setFocused(false)}
+            onFocus={e => setFocused(e.target.id)}
+            onBlur={() => setFocused('')}
             placeholder="Enter email to register free"
             aria-label="Your email address"
+            required
+          />
+        </label>
+        <label
+          htmlFor="organization-input-field"
+          className={cn(styles['input-label'], {
+            [styles.focused]: focused === 'organization-input-field'
+          })}
+        >
+          <input
+            className={styles.input}
+            autoComplete="off"
+            type="text"
+            id="organization-input-field"
+            value={organization}
+            onChange={e => setOrganization(e.target.value)}
+            onFocus={e => setFocused(e.target.id)}
+            onBlur={() => setFocused('')}
+            placeholder="Enter your organization (optional)"
+            aria-label="Your organization"
             required
           />
         </label>
