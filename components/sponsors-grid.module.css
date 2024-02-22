@@ -60,15 +60,9 @@
   color: var(--secondary-color);
   display: flex;
   border-radius: var(--space-2x);
-  background-image: linear-gradient(var(--accents-2), var(--accents-1));
   flex-direction: column;
   justify-content: space-between;
   color: var(--foreground);
-}
-
-.cardBody:hover,
-.cardBody:focus {
-  background-image: linear-gradient(var(--accents-2), var(--accents-05));
 }
 
 .imageWrapper {
@@ -79,13 +73,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
 }
 
 .image {
   max-width: 100%;
   object-fit: contain;
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;
 }
 
 .name {
