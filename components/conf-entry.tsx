@@ -21,6 +21,7 @@ import styles from './conf-entry.module.css';
 import LoadingDots from './loading-dots';
 import { register } from '@lib/user-api';
 import useEmailQueryParam from '@lib/hooks/use-email-query-param';
+import useOrganizationQueryParam from '@lib/hooks/use-organization-query-param';
 import Captcha, { useCaptcha } from './captcha';
 
 type FormState = 'default' | 'loading' | 'error';
@@ -38,7 +39,8 @@ function getErrorMsg(code: string) {
 
 export default function ConfEntry({ onRegister }: { onRegister: () => void }) {
   const [emailInput, setEmailInput] = useState('');
-  const [focused, setFocused] = useState(false);
+  const [organizationInput, setOrganizationInput] = useState('');
+  const [focused, setFocused] = useState('');
   const [formState, setFormState] = useState<FormState>('default');
   const [errorMsg, setErrorMsg] = useState('');
   const {
@@ -50,7 +52,7 @@ export default function ConfEntry({ onRegister }: { onRegister: () => void }) {
 
   const handleRegister = useCallback(
     async (token?: string) => {
-      const res = await register(emailInput, token);
+      const res = await register(emailInput, organizationInput, token);
 
       if (!res.ok) {
         const json = await res.json();
@@ -96,7 +98,8 @@ export default function ConfEntry({ onRegister }: { onRegister: () => void }) {
     [resetCaptcha]
   );
 
-  useEmailQueryParam('login', setEmailInput);
+  useEmailQueryParam('email', setEmailInput);
+  useOrganizationQueryParam('organization', setOrganizationInput);
 
   return (
     <div className={cn(styles.container, styleUtils.appear, styleUtils['appear-first'])}>
@@ -107,7 +110,7 @@ export default function ConfEntry({ onRegister }: { onRegister: () => void }) {
           <label
             htmlFor="email-input-field"
             className={cn(styles['input-label'], {
-              [styles.focused]: focused,
+              [styles.focused]: focused === 'email-input-field',
               [styles.error]: formState === 'error'
             })}
           >
@@ -121,10 +124,35 @@ export default function ConfEntry({ onRegister }: { onRegister: () => void }) {
                 id="email-input-field"
                 value={emailInput}
                 onChange={e => setEmailInput(e.target.value)}
-                onFocus={() => setFocused(true)}
-                onBlur={() => setFocused(false)}
+                onFocus={e => setFocused(e.target.id)}
+                onBlur={() => setFocused('')}
                 placeholder="Enter email to join the event"
                 aria-label="Your email address"
+                required
+              />
+            )}
+          </label>
+          <label
+            htmlFor="organization-input-field"
+            className={cn(styles['input-label'], {
+              [styles.focused]: focused === 'organization-input-field',
+              [styles.error]: formState === 'error'
+            })}
+          >
+            {formState === 'error' ? (
+              <div className={cn(styles.input, styles['input-text'])}>{errorMsg}</div>
+            ) : (
+              <input
+                className={styles.input}
+                autoComplete="off"
+                type="text"
+                id="organization-input-field"
+                value={organizationInput}
+                onChange={e => setOrganizationInput(e.target.value)}
+                onFocus={e => setFocused(e.target.id)}
+                onBlur={() => setFocused('')}
+                placeholder="Enter your organization (optional)"
+                aria-label="Your organization"
                 required
               />
             )}
