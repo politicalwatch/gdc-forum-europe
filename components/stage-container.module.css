@@ -58,7 +58,7 @@
 .stageName {
   display: flex;
   font-size: 24px;
-  color: #fff;
+  color: var(--brand);
   line-height: 1.15;
   letter-spacing: -0.05em;
   font-weight: 800;
