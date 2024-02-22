@@ -94,6 +94,7 @@ export type ConfUser = {
   username?: string | null;
   createdAt?: number | null;
   organization?: string | null;
+  gdprAccept?: boolean;
 };
 
 export type GitHubOAuthData =

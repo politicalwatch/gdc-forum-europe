@@ -47,11 +47,12 @@ export async function getUserById(id: string): Promise<ConfUser> {
 export async function createUser(
   id: string,
   email: string,
-  organization: string
+  organization: string,
+  gdprAccept: boolean
 ): Promise<ConfUser> {
   const { data, error } = await supabase!
     .from('users')
-    .insert({ id, email, organization })
+    .insert({ id, email, organization, gdprAccept })
     .single();
   if (error) throw new Error(error.message);
 

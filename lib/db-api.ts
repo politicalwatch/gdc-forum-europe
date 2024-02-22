@@ -20,7 +20,12 @@ import * as redisApi from './db-providers/redis';
 import * as supabaseApi from './db-providers/supabase';
 
 let dbApi: {
-  createUser: (id: string, email: string, organization: string) => Promise<ConfUser>;
+  createUser: (
+    id: string,
+    email: string,
+    organization: string,
+    gdprAccept: boolean
+  ) => Promise<ConfUser>;
   getUserByUsername: (username: string) => Promise<ConfUser>;
   getUserById: (id: string) => Promise<ConfUser>;
   getTicketNumberByUserId: (id: string) => Promise<string | null>;
@@ -50,9 +55,10 @@ if (process.env.REDIS_PORT && process.env.REDIS_URL && process.env.EMAIL_TO_ID_S
 export async function createUser(
   id: string,
   email: string,
-  organization: string
+  organization: string,
+  gdprAccept: boolean
 ): Promise<ConfUser> {
-  return dbApi.createUser(id, email, organization);
+  return dbApi.createUser(id, email, organization, gdprAccept);
 }
 
 export async function getUserByUsername(username: string): Promise<ConfUser> {

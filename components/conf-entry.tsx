@@ -22,6 +22,7 @@ import LoadingDots from './loading-dots';
 import { register } from '@lib/user-api';
 import useEmailQueryParam from '@lib/hooks/use-email-query-param';
 import useOrganizationQueryParam from '@lib/hooks/use-organization-query-param';
+import useGdprAcceptQueryParam from '@lib/hooks/use-gdpr-accept-query-param';
 import Captcha, { useCaptcha } from './captcha';
 
 type FormState = 'default' | 'loading' | 'error';
@@ -40,6 +41,7 @@ function getErrorMsg(code: string) {
 export default function ConfEntry({ onRegister }: { onRegister: () => void }) {
   const [emailInput, setEmailInput] = useState('');
   const [organizationInput, setOrganizationInput] = useState('');
+  const [gdprAcceptInput, setGdprAcceptInput] = useState(false);
   const [focused, setFocused] = useState('');
   const [formState, setFormState] = useState<FormState>('default');
   const [errorMsg, setErrorMsg] = useState('');
@@ -52,7 +54,7 @@ export default function ConfEntry({ onRegister }: { onRegister: () => void }) {
 
   const handleRegister = useCallback(
     async (token?: string) => {
-      const res = await register(emailInput, organizationInput, token);
+      const res = await register(emailInput, organizationInput, gdprAcceptInput, token);
 
       if (!res.ok) {
         const json = await res.json();
@@ -63,7 +65,7 @@ export default function ConfEntry({ onRegister }: { onRegister: () => void }) {
 
       onRegister();
     },
-    [emailInput, onRegister]
+    [emailInput, organizationInput, gdprAcceptInput, onRegister]
   );
 
   const onSubmit = useCallback(
@@ -100,6 +102,7 @@ export default function ConfEntry({ onRegister }: { onRegister: () => void }) {
 
   useEmailQueryParam('email', setEmailInput);
   useOrganizationQueryParam('organization', setOrganizationInput);
+  useGdprAcceptQueryParam('gdprAccept', setGdprAcceptInput);
 
   return (
     <div className={cn(styles.container, styleUtils.appear, styleUtils['appear-first'])}>
@@ -156,6 +159,24 @@ export default function ConfEntry({ onRegister }: { onRegister: () => void }) {
                 required
               />
             )}
+          </label>
+          <label htmlFor="gdpr-accept-input-field">
+            <input
+              type="checkbox"
+              id="gdpr-accept-input-field"
+              checked={gdprAcceptInput}
+              onChange={e => setGdprAcceptInput(e.target.checked)}
+              required
+            />
+            I accept the{' '}
+            <a
+              href="https://politicalwatch.es/politica-de-privacidad/"
+              target="_blank"
+              rel="noopener"
+            >
+              terms and conditions
+            </a>
+            .
           </label>
           <button
             type="submit"

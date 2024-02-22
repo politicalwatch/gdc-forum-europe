@@ -24,6 +24,7 @@ import styleUtils from './utils.module.css';
 import styles from './form.module.css';
 import useEmailQueryParam from '@lib/hooks/use-email-query-param';
 import useOrganizationQueryParam from '@lib/hooks/use-organization-query-param';
+import useGdprAcceptQueryParam from '@lib/hooks/use-gdpr-accept-query-param';
 import { register } from '@lib/user-api';
 import Captcha, { useCaptcha } from './captcha';
 
@@ -37,6 +38,7 @@ type Props = {
 export default function Form({ sharePage, animationCompleted = false }: Props) {
   const [email, setEmail] = useState('');
   const [organization, setOrganization] = useState('');
+  const [gdprAccept, setGdprAccept] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
   const [errorTryAgain, setErrorTryAgain] = useState(false);
   const [focused, setFocused] = useState('');
@@ -52,7 +54,7 @@ export default function Form({ sharePage, animationCompleted = false }: Props) {
 
   const handleRegister = useCallback(
     (token?: string) => {
-      register(email, organization, token)
+      register(email, organization, gdprAccept, token)
         .then(async res => {
           if (!res.ok) {
             throw new FormError(res);
@@ -99,7 +101,7 @@ export default function Form({ sharePage, animationCompleted = false }: Props) {
           setFormState('error');
         });
     },
-    [email, organization, router, setPageState, setUserData, sharePage]
+    [email, organization, gdprAccept, router, setPageState, setUserData, sharePage]
   );
 
   const onSubmit = useCallback(
@@ -134,6 +136,7 @@ export default function Form({ sharePage, animationCompleted = false }: Props) {
 
   useEmailQueryParam('email', setEmail);
   useOrganizationQueryParam('organization', setOrganization);
+  useGdprAcceptQueryParam('gdprAccept', setGdprAccept);
 
   return formState === 'error' ? (
     <div
@@ -205,6 +208,24 @@ export default function Form({ sharePage, animationCompleted = false }: Props) {
             aria-label="Your organization"
             required
           />
+        </label>
+        <label htmlFor="gdpr-accept-input-field">
+          <input
+            type="checkbox"
+            id="gdpr-accept-input-field"
+            checked={gdprAccept}
+            onChange={e => setGdprAccept(e.target.checked)}
+            required
+          />
+          I accept the{' '}
+          <a
+            href="https://politicalwatch.es/politica-de-privacidad/"
+            target="_blank"
+            rel="noopener"
+          >
+            terms and conditions
+          </a>
+          .
         </label>
         <button
           type="submit"
