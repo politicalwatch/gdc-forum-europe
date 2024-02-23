@@ -47,16 +47,6 @@ export default function SponsorSection({ sponsor }: Props) {
         </a>
       </Link>
       <div className={styles.layout}>
-        <iframe
-          className={cn(styles.video, styleUtils.appear, styleUtils['appear-first'])}
-          allow="picture-in-picture"
-          allowFullScreen
-          height="100%"
-          src={`https://youtube.com/embed/${sponsor.youtubeSlug}`}
-          title={sponsor.name}
-          width="100%"
-        />
-
         <div className={styles.container}>
           <div className={styles['name-and-logo']}>
             <Image
@@ -125,6 +115,16 @@ export default function SponsorSection({ sponsor }: Props) {
               </a>
             ))}
           </div>
+        </div>
+        <div className={cn(styles.video, styleUtils.appear, styleUtils['appear-first'])}>
+          <iframe
+            allow="picture-in-picture"
+            allowFullScreen
+            height="100%"
+            src={`https://youtube.com/embed/${sponsor.youtubeSlug}`}
+            title={sponsor.name}
+            width="100%"
+          />
         </div>
       </div>
     </>

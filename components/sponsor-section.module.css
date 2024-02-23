@@ -16,14 +16,16 @@
 
 .video {
   margin: 24px 0;
-  height: 100%;
-  max-height: 300px;
   width: 100%;
 }
 
+.video > iframe {
+  aspect-ratio: 16 / 9;
+}
+
 .layout {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
   height: 100%;
 }
 
@@ -35,13 +37,11 @@
 
 @media (min-width: 960px) {
   .video {
-    height: 100%;
     margin: 0 var(--space-4x) 0 0;
-    max-height: 800px;
   }
 
   .layout {
-    flex-direction: row-reverse;
+    grid-template-columns: 1fr 1fr;
   }
 
   .container {
