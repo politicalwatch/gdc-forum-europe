@@ -79,6 +79,7 @@
 
 .avatar-wrapper {
   margin-right: var(--space-2x);
+  height: 24px;
 }
 
 .avatar-group {
