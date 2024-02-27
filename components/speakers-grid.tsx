@@ -32,20 +32,18 @@ export default function SpeakersGrid({ speakers }: Props) {
           <Link key={speaker.name} href={`/speakers/${speaker.slug}`} legacyBehavior>
             <a role="button" tabIndex={0} className={styles.card}>
               <div className={styles.imageWrapper}>
-                {speaker.image ? (
-                  <Image
-                    alt={speaker.name}
-                    src={speaker.image.url}
-                    className={styles.image}
-                    loading="lazy"
-                    quality="50"
-                    title={speaker.name}
-                    placeholder={speaker.image.blurDataURL ? 'blur' : 'empty'}
-                    blurDataURL={speaker.image.blurDataURL}
-                    width={300}
-                    height={300}
-                  />
-                ) : null}
+                <Image
+                  alt={speaker.name}
+                  src={speaker.image ? speaker.image.url : '/speaker-default.webp'}
+                  className={styles.image}
+                  loading="lazy"
+                  quality="50"
+                  title={speaker.name}
+                  placeholder={speaker.image?.blurDataURL ? 'blur' : 'empty'}
+                  blurDataURL={speaker.image?.blurDataURL}
+                  width={300}
+                  height={300}
+                />
               </div>
               <div className={styles.cardBody}>
                 <div>

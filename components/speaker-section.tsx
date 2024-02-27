@@ -60,7 +60,7 @@ export default function SpeakerSection({ speaker }: Props) {
           <Image
             alt={speaker.name}
             title={speaker.name}
-            src={speaker.image.url}
+            src={speaker.image ? speaker.image.url : '/speaker-default.webp'}
             className={styles.image}
             loading="lazy"
             height={400}
@@ -101,11 +101,7 @@ export default function SpeakerSection({ speaker }: Props) {
               >
                 <GithubIcon color="#D8D8D8" size={24} />
               </a>
-            ) : (
-              <span className={cn(styles.githubIcon, styles.disabled)}>
-                <GithubIcon color="#D8D8D8" size={24} />
-              </span>
-            )}
+            ) : null}
           </div>
         </div>
       </div>
