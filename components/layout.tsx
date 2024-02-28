@@ -48,8 +48,8 @@ export default function Layout({
       <div className={styles.background}>
         {!hideNav && (
           <header className={cn(styles.header)}>
+            <MobileMenu key={router.asPath} />
             <div className={styles['header-logos']}>
-              <MobileMenu key={router.asPath} />
               <Link href="/" legacyBehavior>
                 <a className={styles.logo}>
                   <Logo />

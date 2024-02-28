@@ -53,9 +53,32 @@
 }
 
 .header-logos {
-  max-width: 600px;
   display: flex;
   align-items: center;
+  max-width: 200px;
+
+  @media (min-width: 768px) {
+    max-width: 400px;
+  }
+
+  @media (min-width: 1032px) {
+    max-width: 600px;
+  }
+}
+
+.logo {
+  display: flex;
+  width: 160px;
+}
+
+.logo-pw {
+  display: none;
+  width: 200px;
+  margin-left: var(--space-6x);
+
+  @media (min-width: 768px) {
+    display: flex;
+  }
 }
 
 .header-right {
@@ -110,15 +133,4 @@
   color: var(--brand);
   background: linear-gradient(90deg, var(--brand), var(--brand)) left bottom transparent no-repeat;
   background-size: 100% 1px;
-}
-
-.logo {
-  display: flex;
-  width: 160px;
-}
-
-.logo-pw {
-  display: flex;
-  width: 200px;
-  margin-left: var(--space-6x);
 }

@@ -63,7 +63,7 @@
 }
 
 .icon {
-  color: #fff;
+  color: var(--brand);
   display: block;
 }
 
