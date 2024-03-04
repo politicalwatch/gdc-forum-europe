@@ -30,13 +30,17 @@
 
 .info {
   font-size: 20px;
+  text-align: center;
   line-height: 1.4;
   text-transform: uppercase;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   margin-bottom: var(--space-8x);
   color: var(--brand);
+
+  @media (min-width: 768px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 .description {
@@ -50,10 +54,15 @@
 }
 
 .description-separator {
+  display: none;
   height: 24px;
   width: 1px;
   background: var(--secondary-color);
   margin: 0 var(--space-4x);
+
+  @media (min-width: 768px) {
+    display: block;
+  }
 }
 
 .info :global(p) {
