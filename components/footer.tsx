@@ -15,7 +15,6 @@
  */
 
 import cn from 'classnames';
-import VercelLogo from '@components/icons/icon-platform';
 import IconLogoPoliticalWatch from './icons/icon-logo-political-watch';
 import styles from './footer.module.css';
 import { COPYRIGHT_HOLDER, SITE_NAME, CODE_OF_CONDUCT, LEGAL_URL, REPO } from '@lib/constants';
@@ -43,8 +42,8 @@ export default function Footer() {
           <div className={styles['footer-separator']} />
         </div>
         <div className={styles['footer-copyright']}>
-          Copyright © {`${new Date().getFullYear()} `} {COPYRIGHT_HOLDER || `${SITE_NAME}.`} All
-          rights reserved.
+          Copyright © {`${new Date().getFullYear()} `} {`${COPYRIGHT_HOLDER}.` || `${SITE_NAME}.`}{' '}
+          All rights reserved.
         </div>
         <div className={styles['footer-center-group']}>
           <p className={styles['footer-paragraph']}>
@@ -57,17 +56,21 @@ export default function Footer() {
               Source Code
             </a>
           </p>
-          <div className={styles['footer-separator']} />
-          <p className={styles['footer-paragraph']}>
-            <a
-              href={CODE_OF_CONDUCT}
-              className={styles['footer-link']}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Code of Conduct
-            </a>
-          </p>
+          {CODE_OF_CONDUCT && (
+            <>
+              <div className={styles['footer-separator']} />
+              <p className={styles['footer-paragraph']}>
+                <a
+                  href={CODE_OF_CONDUCT}
+                  className={styles['footer-link']}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Code of Conduct
+                </a>
+              </p>
+            </>
+          )}
           {LEGAL_URL && (
             <>
               <div className={styles['footer-separator']} />
