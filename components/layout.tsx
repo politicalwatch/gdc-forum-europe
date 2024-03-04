@@ -20,7 +20,7 @@ import { useRouter } from 'next/router';
 import { NAVIGATION } from '@lib/constants';
 import styles from './layout.module.css';
 import Logo from './icons/icon-logo';
-import IconLogoPoliticalWatch from './icons/icon-logo-political-watch';
+import IconLogoPoliticalWatchCompact from './icons/icon-logo-political-watch-compact';
 import { SkipNavContent } from './skip-nav';
 import MobileMenu from './mobile-menu';
 import Footer from './footer';
@@ -57,7 +57,7 @@ export default function Layout({
               </Link>
               <Link href="/" legacyBehavior>
                 <a className={styles['logo-pw']}>
-                  <IconLogoPoliticalWatch />
+                  <IconLogoPoliticalWatchCompact />
                 </a>
               </Link>
             </div>

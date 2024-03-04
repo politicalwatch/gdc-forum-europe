@@ -42,6 +42,7 @@
 }
 
 .header {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -53,32 +54,28 @@
 }
 
 .header-logos {
+  position: relative;
   display: flex;
   align-items: center;
-  max-width: 200px;
+  gap: var(--space-4x);
+  max-width: 250px;
 
   @media (min-width: 768px) {
-    max-width: 400px;
+    max-width: 300px;
   }
 
   @media (min-width: 1032px) {
-    max-width: 600px;
   }
 }
 
 .logo {
   display: flex;
-  width: 160px;
+  width: 50%;
 }
 
 .logo-pw {
-  display: none;
-  width: 200px;
-  margin-left: var(--space-6x);
-
-  @media (min-width: 768px) {
-    display: flex;
-  }
+  display: flex;
+  width: 50%;
 }
 
 .header-right {
