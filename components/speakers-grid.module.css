@@ -54,7 +54,7 @@
 .card:hover,
 .card:focus {
   outline: none;
-  background-image: linear-gradient(var(--accents-2), var(--accents-1)),
+  background-image: linear-gradient(var(--accents-2), var(--accents-05)),
     linear-gradient(to right, var(--brand), var(--brand));
 }
 
@@ -62,16 +62,10 @@
   position: relative;
   padding: var(--space-4x);
   border-radius: var(--space-2x);
-  background-image: linear-gradient(var(--accents-2), var(--accents-1));
   color: var(--foreground);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
-
-.cardBody:hover,
-.cardBody:focus {
-  background-image: linear-gradient(var(--accents-2), var(--accents-05));
 }
 
 .imageWrapper {
