@@ -49,7 +49,10 @@ export async function getAllSpeakers(): Promise<Speaker[]> {
          bio
          title
          slug
+         web
          twitter
+         instagram
+         linkedin
          github
          company
          talk {
