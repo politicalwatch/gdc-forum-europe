@@ -28,6 +28,7 @@
 }
 
 .row {
+  position: relative;
   display: flex;
   flex-direction: column;
   margin: 0 24px;
@@ -37,23 +38,54 @@
 }
 
 .stage-name {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   font-size: 22px;
   color: #fff;
   line-height: 1.15;
   letter-spacing: -0.05em;
   font-weight: 800;
   min-width: 220px;
+  margin-right: var(--space-4x);
   padding-bottom: var(--space-2x);
   position: absolute;
   left: initial;
   color: var(--brand);
 }
 
+.stage-name span {
+  display: block;
+  margin-bottom: var(--space-8x);
+}
+
+.stage-name a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-2x);
+  color: var(--accents-1);
+  background-color: var(--brand);
+  border-radius: 10px;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.stage-name a:hover {
+  transition: all 0.2s ease-in-out;
+  background-color: var(--accents-7);
+}
+
+.stage-name a span {
+  margin: 0;
+}
+
 .talks {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   width: 100%;
-  margin-top: 40px;
+  margin-top: 150px;
 }
 
 .talks > div {
